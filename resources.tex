@@ -1,1 +1,26 @@
 \section{DM resources for user batch} \label{sec:resources}
+The requirements and this allocation for this are not very large.
+At the time of requirement writing Jupyter nor the notion of a Science Platform existed.
+The provision of the RSP has to be done within the allocation of user compute.
+
+\subsection{Compute}
+As pointed out in \citeds{DMTN-202} the DM requirements stipulate at least
+10\% of compute for user batch.
+This is included in the USDF sizing model \citeds{DMTN-135}.
+Looking at table 21 in \citeds{DMTN-135} we see a total cores in USDF  at around 15K.
+This includes 10\% for users so around 1.3K for user.
+The RSP assuming a peak of 500 simultaneous users would need 250 or so of those.
+User batch would therefore have about 1K cores depending on load.
+This implies the need for a controlled sharing mechanism (\secref{sec:quotas}).
+
+
+
+\subsection{Storage}
+Table 40 of \citeds{DMTN-135} list all datasets used for sizing,
+any user batch processing would have to fit in the science user home space.
+There is a margin for other data sets as should be clear from \secref{sec:requirements} agreed user defined products will have to be stored at and served from the USDF.
+No requirement was laid down as to what data volume should be allocated.
+The sizing model covers about 10\%  (as stipulated for compute) in the Other/Misc data set provision.
+
+
+\subsection{Quotas and allocation} \label{sec:quotas}
