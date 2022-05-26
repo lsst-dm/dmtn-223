@@ -3,7 +3,7 @@ The requirements and this allocation for this are not very large.
 At the time of requirement writing Jupyter nor the notion of a Science Platform existed.
 The provision of the RSP has to be done within the allocation of user compute.
 
-\subsection{Compute}
+\subsection{Compute} \label{sec:compute}
 As pointed out in \citeds{DMTN-202} the DM requirements stipulate at least
 10\% of compute for user batch.
 This is included in the USDF sizing model \citeds{DMTN-135}.
@@ -18,9 +18,45 @@ This implies the need for a controlled sharing mechanism (\secref{sec:quotas}).
 \subsection{Storage}
 Table 40 of \citeds{DMTN-135} list all datasets used for sizing,
 any user batch processing would have to fit in the science user home space.
-There is a margin for other data sets as should be clear from \secref{sec:requirements} agreed user defined products will have to be stored at and served from the USDF.
+There is a margin for other data sets as should be clear from \secref{sec:requirements} agreed user defined products will have to be stored at, and served, from the USDF.
 No requirement was laid down as to what data volume should be allocated.
 The sizing model covers about 10\%  (as stipulated for compute) in the Other/Misc data set provision.
 
 
 \subsection{Quotas and allocation} \label{sec:quotas}
+
+As users come online in RSP we will have to enforce quotas.
+
+Nominally a notebook user requires a virtual core though a 0.5 slice is actually sufficient in most cases.
+In \secref{sec:compute} we suggested 250 cores for notebook users with a peak of 500. If we assume the average is more like 100 users we could allow a few more cores per user for e.g. DASK execution. If we assume that only  fraction, say 10\%,  of users would run DASK we could allocate give a 10 core quota for users.
+It would have to be a zero sum game though not exceeding the total allocation more than briefly.
+If were not using the batch allocation we could use more of that on DASK type tasks.
+Here we will clearly have to see what users do and want.
+
+Restriction of the core per Kubernetes pod and hence per user is doable.
+
+
+\action{DMLT}{soon}{Should we are all Google Cores for DASK ? Send all PanDA to USDF ?}
+
+Table 40 in \citeds{DMTN-135} allocates 2PB in year 1 growing to 9PB in year 10 for science user home space.
+This is still driven by the original requirement to support 7500 users. Table 40 assumes 5K users in year 1
+yielding a limit of 40GB per user. Of course usage will not be even so we could set the limit higher like 60GB
+and monitor what happens. On SDSS we kept the quota low and accepted justified requests to get more - most people kept within the quota by keeping their user space. Its not obvious what a good number is here but perhaps we should start the RSP users on 10GB quota.
+
+\action{DMLT}{soon}{Should we start user space quota at 10GB ?  is there a reason for more ? (or less?)}
+
+It is not clear we have the technology in place to enforce disk quotas yet.
+
+\subsubsection{Peak times}
+There are going to be known events such as a Data Release which we know will put pressure on the system.
+For these event we would want to scale back to basic quotas like 0.5 core per user  and disabling DASK or even batch execution.
+We should also experiment with paying for the surge and see if subsequent lulls even out the bill.
+
+\subsubsection{Unused home space}
+Space on cloud means cost.
+If a  user is not using their space for long period it should be migrated to cheaper storage.
+Along period could be  a year but six months seems long enough.
+Again we have no mechanism for this - Richard even suggested taking it to USDF but I wonder if cold storage on google is better.
+
+\action{SQUARE}{soon}{Should we have user home migration to get un touched home spaces moved off cloud?}
+
