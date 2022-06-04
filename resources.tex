@@ -35,9 +35,10 @@ If were not using the batch allocation we could use more of that on DASK type ta
 Here we will clearly have to see what users do and want.
 
 Restriction of the core per Kubernetes pod and hence per user is doable.
+This however needs more work.
 
 
-{\bf Should we are all Google Cores for DASK ? Send all PanDA to USDF ? But then we do not have 10\% there since we spent on Google.}
+{\bf In operations should we are all Google Cores for interactive batch Dask/Spark ? Send all PanDA to USDF ? But then we do not have 10\% there since we spent on Google.}
 
 \citeds{DMTN-135} table 40 allocates 2PB in year 1 growing to 9PB in year 10 for science user home space.
 This is still driven by the original requirement to support 7500 users. Table 40 assumes 5K users in year 1
