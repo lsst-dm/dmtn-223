@@ -5,18 +5,18 @@ Hence we will need an arbitration committee \secref{sec:arbitration}
 
 We promised some form of user batch which it seems likely will be needed at least initially as many users understand batch processing of images say. By batch here we should be clear we mean a BPS command line interface to something like PanDA. \secref{sec:bpsbatch}
 
-These two items with the RSP fulfill our requirements.  RSP covers a bunch of other requirements on queries and image access \secref{sec:rsp}
+These two items with the RSP fulfill our requirements.  RSP covers a bunch of other requirements on queries and image access \secref{sec:rsp}.
 
 
 \subsection{Science Platform}\label{sec:rsp}
 The RSP is now well established and is following the vision \citeds{LSE-319}.
 Data Preview 0 has introduced tn early version of this to the community.
 
-\citeds{DMTN-202} points 4 (\secref{sec:requirements}) on catalogs we can assume means a sort of Dask/Spark access to the Parquet files.  The baseline answer for this was Qserv and Qserv will be available which covers us from the requirements point of view i.e. we can say to NSF we are done with Qserv in place.
+\citeds{DMTN-202} points 4 (\secref{sec:requirements}) on catalogs we can assume means a sort of Dask/Spark access to the Parquet files.  The baseline answer for catalog queries  was Qserv and but we so not have the "next to the database processing". The DAC team feel the parquet files provide a good mechanism for this and there is some effort in FY24 to implement it.{\textbf We should consider carefully what the minimum system we need here is to cover our requirements.}
 
-We will not at this point promise Dask/Spark like services but should work on that in the background with LINCC. I think we all agree this will be scientifically useful, but we need to finish construction as a priority.
+We will not at this point promise extensive Dask/Spark like services but should work on that in the background with LINCC. I think we all agree this will be scientifically useful, but we need to finish construction as a priority.
 
-\textbf{Do we agree to work with LINCC on this ? and promise the minimum batch system as the construction deliverable}
+\textbf{Do we agree to work with LINCC on DASK/Spark ? and promise the minimum batch system and next to the database processing  as the construction deliverable}
 
 \subsection{Butler Gen3}
 
