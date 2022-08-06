@@ -14,6 +14,8 @@ The RSP assuming a peak of 500 simultaneous users would need 250 or so of those.
 User batch would therefore have about 1K cores depending on load.
 This implies the need for a controlled sharing mechanism (\secref{sec:quotas}).
 
+It would also be excellent to pursue a research project with an NSF facility (e.g. TACC) into what could be done with Rubin data at such a facility in terms of arbitrary compute. TACC have expressed interest in this.
+
 
 
 \subsection{Storage}
@@ -38,15 +40,20 @@ Restriction of the core per Kubernetes pod and hence per user is doable.
 This however needs more work.
 
 
-%{\bf In operations should we use all Google Cores for interactive batch Dask/Spark ? Send all PanDA to USDF ? But then we do not have 10\% there since we spent on Google.} - PROBALBY NOT FEASABLE
+In operations we propose to use all Google Cores for interactive batch Dask/Spark.
+We will  send all batch jobs to USDF. We have some capacity at USDF for this and potentially some spare cycles in the shared data facility.
 
 \citeds{DMTN-135} table 40 allocates 2PB in year 1 growing to 9PB in year 10 for science user home space.
 This is still driven by the original requirement to support 7500 users. Table 40 assumes 5K users in year 1
 yielding a limit of 40GB per user. Of course usage will not be even so we could set the limit higher like 60GB
 and monitor what happens. On SDSS we kept the quota low and accepted justified requests to get more - most people kept within the quota by keeping their user space. Its not obvious what a good number is here but perhaps we should start the RSP users on 10GB quota.
 
+KT points out on NCSA "9\% (81 of 892) of NCSA home directories had more than 10 GB on 2022-02-07."
+This would indicate  starting allocation on RSP of 10GB may work for 90\% of  users - we can then increase on request for some users.
 
-{\bf Should we start user space quota at 10GB ?  is there a reason for more ? (or less?)}
+Power users who would be some of that other 10\% may be more likely to seek batch production at SLAC in any case.
+
+
 
 It is not clear we have the technology in place to enforce disk quotas yet.
 
