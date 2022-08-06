@@ -34,7 +34,7 @@ aglossary.tex :$(tex) myacronyms.txt
 clean:
 	latexmk -c
 	rm -f $(DOCNAME).{bbl,glsdefs,pdf}
-	rm -f meta.tex
+	rm -f meta.tex actions.tex
 
 .FORCE:
 

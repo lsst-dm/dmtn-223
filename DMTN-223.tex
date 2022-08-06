@@ -1,10 +1,11 @@
-\documentclass[DM,authoryear,toc]{lsstdoc}
+\documentclass[DM,lsstdraft,authoryear,toc]{lsstdoc}
 % lsstdoc documentation: https://lsst-texmf.lsst.io/lsstdoc.html
 \input{meta}
 
 % Package imports go here.
 
 % Local commands go here.
+\setActionItemPrefix{B-}
 
 %If you want glossaries
 %\input{aglossary.tex}
@@ -28,7 +29,7 @@ William O'Mullane
 % \setDocCurator{The Curator of this Document}
 
 \setDocAbstract{%
-In response to DMTN-202 we have to look at resources for development and usage at USDF. 
+In response to DMTN-202 we have to look at resources for development and usage at USDF.
 }
 
 % Change history defined here.
@@ -43,13 +44,17 @@ In response to DMTN-202 we have to look at resources for development and usage a
 \begin{document}
 
 % Create the title page.
-\maketitle
+%\maketitle
 % Frequently for a technote we do not want a title page  uncomment this to remove the title page and changelog.
-% use \mkshorttitle to remove the extra pages
+\mkshorttitle
 
 % ADD CONTENT HERE
 % You can also use the \input command to include several content files.
 
+\input{body}
+
+%\section{Outstanding questions}
+%\listofactions
 \appendix
 % Include all the relevant bib files.
 % https://lsst-texmf.lsst.io/lsstdoc.html#bibliographies
