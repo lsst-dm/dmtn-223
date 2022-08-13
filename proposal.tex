@@ -12,13 +12,13 @@ These two items with the RSP fulfill our requirements.  RSP covers a bunch of ot
 The RSP is now well established and is following the vision \citeds{LSE-319}.
 Data Preview 0 has introduced tn early version of this to the community.
 
-\citeds{DMTN-202} points 4 (\secref{sec:requirements}) on catalogs we can assume means a sort of Dask/Spark access to the Parquet files.  The baseline answer for catalog queries  was Qserv and but we so not have the "next to the database processing". The DAC team feel the parquet files provide a good mechanism for this and there is some effort in FY24 to implement it.{\textbf We should consider carefully what the minimum system we need here is to cover our requirements.}
+\citeds{DMTN-202} points 4 (\secref{sec:requirements}) on catalogs we can assume means a sort of Dask/Spark access to the Parquet files.  The baseline answer for catalog queries  was Qserv and but we so not have the "next to the database processing". The DAC team feel the parquet files provide a good mechanism for this and there is some effort in FY24 to implement it. We should consider carefully what the minimum system we need here is to cover our requirements.
 
 We will not at this point promise extensive Dask/Spark like services but should work on that in the background with LINCC.
 We all agree this will be scientifically useful, but we need to finish construction as a priority and this is not a requirement. We will work with LINCC on it certainly and something will be available but we are not promising this and we are not accepting requirements on it.
 
 The standard/default allocation for any data rights user will be RSP access.
-Users wilt bulk needs will use BPS (\secref{sec:bpsbatch})
+Users wilt bulk needs will use BPS (\secref{sec:bpsbatch}) at a Data Facility.
 
 
 \subsection{Butler Gen3} \label{sec:gen3}
@@ -29,7 +29,7 @@ If users do not use the Butler they will not have provenance.
 \subsection{BPS Batch }\label{sec:bpsbatch}
 
 Our baseline is user batch based on Gen3 Task framework.
-Users needing batch will need to go via the Resource Allocation Committee (\secref{sec:allocation}) and
+Users needing batch will need to go via the Resource Allocation Committee (\secref{sec:arbitration}) and
 will be given SLAC accounts to run user Batch jobs at SLAC.
 Those who do not wish to use the Rubin pipelines could be facilitated see \secref{sec:othercode}.
 
