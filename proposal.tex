@@ -10,15 +10,19 @@ These two items with the RSP fulfill our requirements.  RSP covers a bunch of ot
 
 \subsection{Science Platform}\label{sec:rsp}
 The RSP is now well established and is following the vision \citeds{LSE-319}.
-Data Preview 0 has introduced tn early version of this to the community.
+Data Preview 0 has introduced an early version of this to the community.
 
-\citeds{DMTN-202} points 4 (\secref{sec:requirements}) on catalogs we can assume means a sort of Dask/Spark access to the Parquet files.  The baseline answer for catalog queries  was Qserv and but we so not have the "next to the database processing". The DAC team feel the parquet files provide a good mechanism for this and there is some effort in FY24 to implement it. We should consider carefully what the minimum system we need here is to cover our requirements.
+\citeds{DMTN-202} point 4 (\secref{sec:requirements}) in respect of catalogs we now propose to be satisfied by some form of Dask/Spark access to the catalogs as spatially sharded Parquet files.
+The previous baseline design for this was a layer on top of Qserv, but in practice we do not have this ``next to the database processing'' implemented, and the RSP and Data Access teams feel that, with the advance of data-science software, a Parquet-based solution is now a good solution.
+There is some effort available in FY24 to prototype and implement this.
+We shall consider carefully what the minimum system we need here is to cover our requirements.
 
-We will not at this point promise extensive Dask/Spark like services but should work on that in the background with LINCC.
+We will not at this point promise extensive Dask/Spark like services.
+The minimum needed to meet requirements will be done on construction and we shall  work further  on it in the background with LINCC.
 We all agree this will be scientifically useful, but we need to finish construction as a priority and this is not a requirement. We will work with LINCC on it certainly and something will be available but we are not promising this and we are not accepting requirements on it.
 
 The standard/default allocation for any data rights user will be RSP access.
-Users wilt bulk needs will use BPS (\secref{sec:bpsbatch}) at a Data Facility.
+Users with bulk needs will use BPS (\secref{sec:bpsbatch}) at a Data Facility.
 
 
 \subsection{Butler Gen3} \label{sec:gen3}
@@ -62,6 +66,7 @@ If users wish only to write files they would have to go in their user space or p
 \subsection{Arbitration or Resource Allocation Committee}\label{sec:arbitration}
 As \secref{sec:resources} points out we will need an arbitration committee of some sort.
 It seems this should also favor individuals from under represented  and under resourced groups though that is being proposed here for the first time.
+We note also  proposals committing to releasing Level 3 data products that are made available to all data rights holders will also  be allowed to be given a preference by the RAC.
 The committee is called out in the operations plan \citedsp{RDO-018} Section 12.2 but we have as yet not created a charge for it.
 This committee would at least be responsible for creating, implementing and updating  policies on at least:
 

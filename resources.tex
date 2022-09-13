@@ -40,7 +40,9 @@ Restriction of the core per Kubernetes pod and hence per user is doable.
 This however needs more work.
 
 
-In operations we propose to use all Google Cores for interactive batch Dask/Spark.
+In operations we propose catalog processing with Dask/Spark goes to Google;
+ any processing (images or, less often, catalogs) done with BPS goes to USDF batch.
+
 We will  send all batch jobs to USDF. We have some capacity at USDF for this and potentially some spare cycles in the shared data facility.
 
 \citeds{DMTN-135} table 40 allocates 2PB in year 1 growing to 9PB in year 10 for science user home space.
