@@ -48,7 +48,7 @@ We will  send all batch jobs to USDF. We have some capacity at USDF for this and
 \citeds{DMTN-135} table 40 allocates 2PB in year 1 growing to 9PB in year 10 for science user home space.
 This is still driven by the original requirement to support 7500 users. Table 40 assumes 5K users in year 1
 yielding a limit of 40GB per user. Of course usage will not be even so we could set the limit higher like 60GB
-and monitor what happens. On SDSS we kept the quota low and accepted justified requests to get more - most people kept within the quota by keeping their user space. Its not obvious what a good number is here but perhaps we should start the RSP users on 10GB quota.
+and monitor what happens. On SDSS and BaBar the quota was kept low and justified requests to get more were accepted - most people kept within the quota by keeping their user space. Its not obvious what a good number is here but perhaps we should start the RSP users on 10GB quota.
 
 KT points out on NCSA "9\% (81 of 892) of NCSA home directories had more than 10 GB on 2022-02-07."
 This would indicate  starting allocation on RSP of 10GB may work for 90\% of  users - we can then increase on request for some users.
@@ -61,8 +61,10 @@ It is not clear we have the technology in place to enforce disk quotas yet.
 
 \subsubsection{Peak times}
 There are going to be known events such as a Data Release which we know will put pressure on the system.
-For these event we would want to scale back to basic quotas like 0.5 core per user  and disabling DASK or even batch execution.
+For these event we would want to scale back to basic quotas like 0.5 core per user  and potentially disabling DASK.
 We should also experiment with paying for the surge and see if subsequent lulls even out the bill.
+The latter approach would allow us to maintain a good service level and would be  a more equitable approach since it would
+not penalize the users who have no other form of access.
 
 \subsubsection{Unused home space}
 Space on cloud means cost.
