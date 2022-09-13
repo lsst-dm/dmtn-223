@@ -14,6 +14,8 @@ The RSP assuming a peak of 500 simultaneous users would need 250 or so of those.
 User batch would therefore have about 1K cores depending on load.
 This implies the need for a controlled sharing mechanism (\secref{sec:quotas}).
 
+It would also be excellent to pursue a research project with an NSF facility (e.g. TACC) into what could be done with Rubin data at such a facility in terms of arbitrary compute. TACC have expressed interest in this.
+
 
 
 \subsection{Storage}
@@ -38,30 +40,38 @@ Restriction of the core per Kubernetes pod and hence per user is doable.
 This however needs more work.
 
 
-%{\bf In operations should we use all Google Cores for interactive batch Dask/Spark ? Send all PanDA to USDF ? But then we do not have 10\% there since we spent on Google.} - PROBALBY NOT FEASABLE
+In operations we propose catalog processing with Dask/Spark goes to Google;
+ any processing (images or, less often, catalogs) done with BPS goes to USDF batch.
+
+We will  send all batch jobs to USDF. We have some capacity at USDF for this and potentially some spare cycles in the shared data facility.
 
 \citeds{DMTN-135} table 40 allocates 2PB in year 1 growing to 9PB in year 10 for science user home space.
 This is still driven by the original requirement to support 7500 users. Table 40 assumes 5K users in year 1
 yielding a limit of 40GB per user. Of course usage will not be even so we could set the limit higher like 60GB
-and monitor what happens. On SDSS we kept the quota low and accepted justified requests to get more - most people kept within the quota by keeping their user space. Its not obvious what a good number is here but perhaps we should start the RSP users on 10GB quota.
+and monitor what happens. On SDSS and BaBar the quota was kept low and justified requests to get more were accepted - most people kept within the quota by keeping their user space. Its not obvious what a good number is here but perhaps we should start the RSP users on 10GB quota.
+
+KT points out on NCSA "9\% (81 of 892) of NCSA home directories had more than 10 GB on 2022-02-07."
+This would indicate  starting allocation on RSP of 10GB may work for 90\% of  users - we can then increase on request for some users.
+
+Power users who would be some of that other 10\% may be more likely to seek batch production at SLAC in any case.
 
 
-{\bf Should we start user space quota at 10GB ?  is there a reason for more ? (or less?)}
 
 It is not clear we have the technology in place to enforce disk quotas yet.
 
 \subsubsection{Peak times}
 There are going to be known events such as a Data Release which we know will put pressure on the system.
-For these event we would want to scale back to basic quotas like 0.5 core per user  and disabling DASK or even batch execution.
+For these event we would want to scale back to basic quotas like 0.5 core per user  and potentially disabling DASK.
 We should also experiment with paying for the surge and see if subsequent lulls even out the bill.
+The latter approach would allow us to maintain a good service level and would be  a more equitable approach since it would
+not penalize the users who have no other form of access.
 
 \subsubsection{Unused home space}
 Space on cloud means cost.
 If a  user is not using their space for long period it should be migrated to cheaper storage.
 Along period could be  a year but six months seems long enough.
-Again we have no mechanism for this - Richard even suggested taking it to USDF but I wonder if cold storage on google is better.
+Again we have no mechanism for this - Richard even suggested taking it to USDF but cold storage on google might work.
 
-{\bf Should we have user home migration to get un touched home spaces moved off cloud?}
 
 
 \subsection{Other sites}\label{sec:othersites}
@@ -69,7 +79,7 @@ SLAC have some potential cores available on site to give more batch possibilitie
 
 Some science collaborations, most notably DESC, will have their own resources at some center (NERSC for DESC).  In the DESC case there are good links between NERSC and SLAC making this easy to manage.
 
-No NSF facility is currently planned to hold the data.
+No NSF facility is currently planned to hold the data. TACC are interested to experiment with us.
 
 These sites are true batch sites with Slurm workload management. Users would submit jobs with BPS
 allowing it to figure out if the Parsl, PanDA for job submission on the back end.
