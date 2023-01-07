@@ -39,6 +39,7 @@ clean:
 .FORCE:
 
 meta.tex: Makefile .FORCE
+	git config --global --add safe.directory /workspace
 	rm -f $@
 	touch $@
 	printf '%% GENERATED FILE -- edit this in the Makefile\n' >>$@
