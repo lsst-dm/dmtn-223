@@ -1,4 +1,4 @@
-\section{Proposal} \label{sec:proposal}
+\section{Proposal and agreements} \label{sec:proposal}
 
 Let us assume the resources available are fairly fixed in line with \secref{sec:resources}.
 Hence we will need a resource allocation  committee \secref{sec:arbitration} to arbitrate requests.
@@ -11,13 +11,14 @@ These two items with the RSP fulfill our requirements.  RSP covers a bunch of ot
 \subsection{Science Platform}\label{sec:rsp}
 The RSP is now well established and is following the vision \citeds{LSE-319}.
 Data Preview 0 has introduced an early version of this to the community.
+Data Preview 1 will introduce this more widely.
 
 \citeds{DMTN-202} point 4 (\secref{sec:requirements}) in respect of catalogs we now propose to be satisfied by some form of Dask/Spark access to the catalogs as spatially sharded Parquet files.
 The previous baseline design for this was a layer on top of Qserv, but in practice we do not have this ``next to the database processing'' implemented, and the RSP and Data Access teams feel that, with the advance of data-science software, a Parquet-based solution is now a good solution.
 There is some effort available in FY24 to prototype and implement this.
 We shall consider carefully what the minimum system we need here is to cover our requirements.
 
-We will not at this point promise extensive Dask/Spark like services.
+We do not at this point promise extensive Dask/Spark like services.
 The minimum needed to meet requirements will be done on construction and we shall  work further  on it in the background with LINCC.
 We all agree this will be scientifically useful, but we need to finish construction as a priority and this is not a requirement. We will work with LINCC on it certainly and something will be available but we are not promising this and we are not accepting requirements on it.
 
@@ -34,7 +35,7 @@ If users do not use the Butler they will not have provenance.
 
 Our baseline is user batch based on Gen3 Task framework.
 Users needing batch will need to go via the Resource Allocation Committee (\secref{sec:arbitration}) and
-will be given SLAC accounts to run user Batch jobs at SLAC.
+will be given SLAC accounts to run user Batch jobs at SLAC (subject to the established SLAC user account approval process.)
 Those who do not wish to use the Rubin pipelines could be facilitated see \secref{sec:othercode}.
 
 
@@ -42,13 +43,13 @@ We set DP0.2 as an initial test of seeing how we could work with PanDA \citeds{R
 for DRP. Potentially it could also be used for Prompt Processing and user batch processing.
 In fact we use the BPS front end to submit jobs and middleware which to keep BPS working with at least on other back end as well as PanDA.
 
-It seems then the minimum promise to our batch users would be a BPS front end for job submission.
+The minimum promise to our batch users is a BPS front end for job submission.
 This would make it look the same as any of our internal processes.
-In the end if we use Condor, Slurm, the submission would be BPS.
+In the end if we use Condor, Slurm or Panda the submission would be BPS.
 The job tracking of course would depend on the back end.
-We should not necessarily commit to the same back end in all locations - hence USDF may be PanDA but on Google or an processing IDAC we may have a different back end.
+We do not commit to the same back end in all locations - hence USDF may be PanDA but on Google or a processing IDAC we may have a different back end.
 
-This BPS fronted system would meet \citeds{DMTN-202} points 1-5 (\secref{sec:requirements}). The Point 4 on catalogs can be met with Qserv.
+This BPS fronted system meets \citeds{DMTN-202} points 1-5 (\secref{sec:requirements}). The Point 4 on catalogs can be met with Qserv.
 This would also cover DMS-REQ-0119, DMS-REQ-0125, DMS-REQ-0128, DMS-REQ-0123, DMS-REQ-0127.
 
 \subsubsection{Interactive vs Batch} \label{sec:interactivevbatch}
@@ -76,21 +77,8 @@ If users wish only to write files they would have to go in their user space or p
 
 \subsection{Resource Allocation Committee}\label{sec:arbitration}
 As \secref{sec:resources} points out we will need an arbitration committee of some sort.
-It seems this should also favor individuals from under represented  and under resourced groups though that is being proposed here for the first time.
-We note also  proposals committing to releasing Level 3 data products that are made available to all data rights holders will also  be allowed to be given a preference by the RAC.
-The committee is called out in the operations plan \citedsp{RDO-018} Section 12.2 but we have as yet not created a charge for it.
-This committee would at least be responsible for creating, implementing and updating  policies on at least:
-
-\begin{itemize}
-\item Requests for storage over the default allocation, either temporary or permanent.
-\item Requests for large batch compute accounts at SLAC.
-\item Requests for extra batch compute cycles on Google.
-\item Bringing compute from another Google funded account to operate on the Rubin Object Store Cache or Science Platform.
-\item Cache Optimization on Google wrt. which data sets may live entirely on Google (e.g. coadds).
-\item \ldots
-\end{itemize}
-
-This would meet \citeds{DMTN-202} point 6  (\secref{sec:requirements}).
+This is now covered, at least in draft,  in \citeds{RTN-084}
+This meets \citeds{DMTN-202} point 6  (\secref{sec:requirements}).
 
 \subsection{Other catalogs}
 
